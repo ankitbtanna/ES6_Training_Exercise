@@ -1,26 +1,32 @@
-const fetch = require('node-fetch');
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promise 1 resolved');
+    }, 3000)
+});
 
-const promises = [
-    fetch('http://localhost:3000/carManufacturers'),
-    fetch('http://localhost:3000/timezones'),
-    fetch('https://some-fake-url/demo/posts'),
-    fetch('http://localhost:3000/countries')
-];
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject('Promise 2 reject');
+    }, 100)
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('Promise 3 resolved');
+    }, 300)
+});
 
 // Promise.all
 // When all promises have been fulfilled
 // or
 // one of them is rejected
-async function getAllData() {
-    await Promise.all(promises)
-        .then(async (res) => {
-            return await res[0].json()
-        })
+function getAllData() {
+    Promise.all([promise1, promise2, promise3])
         .then((response) => {
             console.log(response);
         })
-        .catch((err) => {
-            console.log('#############', err)
+        .catch((error) => {
+            console.log(error);
         });
 }
 
