@@ -12,20 +12,12 @@ const promise2 = new Promise((resolve, reject) => {
 
 const promise3 = new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve('Promise 3 resolved');
+        reject('Promise 3 rejected');
     }, 300)
 });
 
-// Promise.allSettled
-// Returns a promise after all the given promises are resolved or rejected
-function getAllData() {
-    Promise.allSettled([promise1, promise2, promise3])
-        .then((result) => {
-            console.log('SUCCESS ' + result);
-            result.forEach((res) => {
-                console.log(res.status);
-            })
-        });
-}
-
-getAllData();
+// Promise.allSettled - ALL promises are RESOLVED/REJECTED
+Promise.allSettled([promise1, promise2, promise3])
+    .then((response) => {
+        console.log(response);
+    })

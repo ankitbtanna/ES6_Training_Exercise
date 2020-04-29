@@ -6,7 +6,7 @@ const promise1 = new Promise((resolve, reject) => {
 
 const promise2 = new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve('Promise 2 rejected');
+        resolve('Promise 2 resolved');
     }, 100)
 });
 
@@ -16,16 +16,8 @@ const promise3 = new Promise((resolve, reject) => {
     }, 300)
 });
 
-// Promise.race
-// Returns a promise that fulfills or rejects as soon as possible
-function getAllData() {
-    Promise.race([promise1, promise2, promise3])
-        .then((result) => {
-            console.log('SUCCESS ' + result);
-        })
-        .catch((error) => {
-            console.log('ERROR ' + error)
-        })
-}
-
-getAllData();
+// Promise.race - FIRST/FASTEST promise to be resolver or rejected
+Promise.race([promise1, promise2, promise3])
+    .then((response) => {
+        console.log(response);
+    })

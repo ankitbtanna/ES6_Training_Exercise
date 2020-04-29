@@ -16,19 +16,11 @@ const promise3 = new Promise((resolve, reject) => {
     }, 300)
 });
 
-// Promise.any
-// Returns a promise after any ONE promise
-function getAllData() {
-    Promise.any([promise1, promise2, promise3])
-        .then((result) => {
-            console.log('SUCCESS ' + result);
-            result.forEach((res) => {
-                console.log(res.status);
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
-getAllData();
+// Promise.any -
+Promise.any([promise1, promise2, promise3])
+    .then((response) => {
+        console.log(response);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
