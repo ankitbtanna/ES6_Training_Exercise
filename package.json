@@ -12,11 +12,11 @@
   "dependencies": {
     "fetch": "^1.1.0",
     "node-fetch": "^2.6.0",
-    "webpack": "^4.33.0",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^3.6.0"
   },
   "devDependencies": {
     "json-server": "^0.16.1",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^5.0.1"
   }
 }
